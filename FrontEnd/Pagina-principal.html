@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="shortcut icon"
+      href="/FrontEnd/img/icon-tab.png"
+      type="image/x-icon"
+    />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="D313-CodePatrol" />
+
+    <title>Polícia Marítima</title>
+
+    <!-- Custom fonts -->
+    <link
+      href="/FrontEnd/vendor/fontawesome-free/css/all.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles -->
+    <link
+      href="/FrontEnd/vendor/datatables/dataTables.bootstrap4.min.css"
+      rel="stylesheet"
+    />
+    <link href="/FrontEnd/css/sb-admin-2.min.css" rel="stylesheet" />
+  
+    <!-- PWA -->
+  <link rel="manifest" href="/FrontEnd/manifest.json" />
+  <!-- ios support -->
+  <link
+    rel="apple-touch-icon"
+    href="assets/icons/apple-icon-192x192-dunplab-manifest-16715.png"
+  />
+  <meta name="apple-mobile-web=app-status-bar" content="#00aae7" />
+  <meta name="theme-color" content="#00aae7" />
+  </head>
+
+  <body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <!-- Menu lateral -->
+      <ul
+        class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+        id="accordionSidebar"
+      >
+        <!-- icone -->
+        <div
+          class="sidebar-brand d-flex align-items-center justify-content-center"
+        >
+          <div class="sidebar-brand-icon">
+            <img
+              src="/FrontEnd/img/icon-menu-lateral.png"
+              alt=""
+              height="40px"
+              width="45px"
+            />
+          </div>
+          <div class="sidebar-brand-text mx-3">Polícia Marítima</div>
+        </div>
+
+        <br />
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+        <br />
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item active">
+          <a class="nav-link" href="/FrontEnd/Pagina-principal.html">
+            <i class="fas fa-home"></i>
+            <span>Página principal</span></a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/FrontEnd/Perfil.html">
+            <i class="fas fa-user-circle"></i>
+            <span>Perfil</span></a
+          >
+        </li>
+
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapseUtilities"
+            aria-expanded="true"
+            aria-controls="collapseUtilities"
+          >
+            <i class="fas fa-trophy"></i>
+            <span>Ranking</span>
+          </a>
+          <div
+            id="collapseUtilities"
+            class="collapse"
+            aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar"
+          >
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="/FrontEnd/Ranking.html#ranking-operacionais"
+                >Ranking Operacionais</a
+              >
+              <a class="collapse-item" href="/FrontEnd/Ranking.html#ranking-equipa"
+                >Ranking Equipa</a
+              >
+            </div>
+          </div>
+        </li>
+
+        <br />
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            data-toggle="modal"
+            data-target="#logoutModal"
+            href="/FrontEnd/index.html"
+          >
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span></a
+          >
+        </li>
+
+        <br />
+        <br />
+
+        <!-- Sidebar Message -->
+        <div
+          class="sidebar-brand d-flex align-items-center justify-content-center"
+        >
+          <div class="sidebar-brand-icon">
+            <img
+              src="/FrontEnd/img/Secure4All icon.png"
+              alt=""
+              height="45px"
+              width="60px"
+            />
+          </div>
+          <div class="sidebar-brand-text mx-3">Secure4All</div>
+        </div>
+      </ul>
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <nav
+          class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+          >
+            <!-- Sidebar Toggle (Topbar) -->
+            <button
+              id="sidebarToggleTop"
+              class="btn btn-link d-md-none rounded-circle mr-3"
+            >
+              <i class="fa fa-bars"></i>
+            </button>
+
+            <img class="img-fluid" src="/FrontEnd/img/icone.jpg" width="100rem" />
+
+            <!-- Topbar Navbar -->
+            <ul class="navbar-nav ml-auto">
+              <!-- Nav Item - User Information -->
+              <li class="nav-item">
+                <a class="nav-link">
+                  <label class="mr-2 d-none d-lg-inline text-gray-600 small" id="span_nome"
+                    ></label
+                  >
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- End of Topbar -->
+
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">
+                  Ocorrência Atual
+                </h6>
+              </div>
+              <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="p-4">
+                      <h6 id="label_local"><img id="imagem-espera" src="/FrontEnd/img/espera.png" alt=""></h6>
+                      <br />
+                      <h6 id="label_urgencia"></h6>
+                      <br />
+                      <div class="form-group">
+                        <label for="exampleFormControlSelect2" id="label_nomeEquipa" >Equipa: </label>
+                        
+                        <div class="table-responsive">
+                          <table
+                            class="table table-bordered table-hover"
+                            id="tabela-equipa-oco-atual"
+                            width="100%"
+                            cellspacing="0"
+                          >
+                            <thead>
+                              <tr>
+                                <th>Id</th>
+                                <th>Nome</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <!-- Aqui o data-target vai mudar, se for o responsavel é #exampleModalCenter se não for é modalSemResponsavel -->
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="btnTestemunhas"
+                        data-toggle="modal"
+                        data-target="#exampleModalCenter"
+                      >
+                        Confirmar
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    class="col-lg-6 row justify-content-center d-none d-lg-block bg-ocorrenciatual-image"
+                  ></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">
+                  Histórico geral
+                </h6>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table
+                    class="table table-bordered table-hover"
+                    id="tabela-historico-ocorrencias"
+                    width="100%"
+                    cellspacing="0"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Id Ocorrência</th>
+                        <th>Local</th>
+                        <th>Id Equipa</th>
+                        <th>Urgência</th>
+                        <th>Data</th>
+                        <th>Creditos</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Carrossel para ocorrencias a decorrer -->
+            <!--  
+
+              <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">
+                  Ocorrências a decorrer
+                </h6>
+              </div>
+              <div class="card-body">
+                <div class="page-wrapper">
+                  <div class="post-slider">
+                    <i class="fas fa-chevron-left prev"></i>
+                    <i class="fas fa-chevron-right next"></i>
+
+                    <div class="post-wrapper">
+                      <div class="post">
+                        <img
+                          src=""
+                          alt=""
+                          class="slider-image"
+                        />
+                        <div class="post-info">
+                          <h5>Local:</h5>
+                          <h5></h5>
+
+                          <i class="far fa-user">Responsável</i>
+                          &nbsp;
+                          <i class="fas fa-clock"></i>
+
+                          <hr />
+                          <h6>
+                            <a
+                            class="ancora-verMais"
+                              data-toggle="modal"
+                              data-target="#ocorrencia-decorrer"
+                              >Ver mais</a
+                            >
+                          </h6>
+                        </div>
+                      </div>
+                      <div class="post">
+                        <img
+                          src=""
+                          alt=""
+                          class="slider-image"
+                        />
+                        <div class="post-info">
+                          <h5>Local</h5>
+                          <h5></h5>
+
+                          <i class="far fa-user"> Responsável</i>
+                          &nbsp;
+                          <i class="fas fa-clock"></i>
+
+                          <hr />
+                          <h6>
+                            <a
+                            class="ancora-verMais"
+                              data-toggle="modal"
+                              data-target="#ocorrencia-decorrer"
+                              >Ver mais</a
+                            >
+                          </h6>
+                        </div>
+                      </div>
+                      <div class="post">
+                        <img
+                          src=""
+                          alt=""
+                          class="slider-image"
+                        />
+                        <div class="post-info">
+                          <h5>Local:</h5>
+                          <h5></h5>
+
+                          <i class="far fa-user"> Responsável</i>
+                          &nbsp;
+                          <i class="fas fa-clock"></i>
+
+                          <hr />
+                          <h6>
+                            <a
+                            class="ancora-verMais"
+                              data-toggle="modal"
+                              data-target="#ocorrencia-decorrer"
+                              >Ver mais</a
+                            >
+                          </h6>
+                        </div>
+                      </div>
+                      <div class="post">
+                        <img
+                          src=""
+                          alt=""
+                          class="slider-image"
+                        />
+                        <div class="post-info">
+                          <h5>Local:</h5>
+                          <h5></h5>
+
+                          <i class="far fa-user"> Responsável</i>
+                          &nbsp;
+                          <i class="fas fa-clock"></i>
+
+                          <hr />
+                          <h6>
+                            <a
+                            class="ancora-verMais"
+                              data-toggle="modal"
+                              data-target="#ocorrencia-decorrer"
+                              >Ver mais</a
+                            >
+                          </h6>
+                        </div>
+                      </div>
+                      <div class="post">
+                        <img
+                          src=""
+                          alt=""
+                          class="slider-image"
+                        />
+                        <div class="post-info">
+                          <h5>Local:</h5>
+                          <h5></h5>
+
+                          <i class="far fa-user"> Responsável</i>
+                          &nbsp;
+                          <i class="fas fa-clock"></i>
+
+                          <hr />
+                          <h6>
+                            <a
+                            class="ancora-verMais"
+                              data-toggle="modal"
+                              data-target="#ocorrencia-decorrer"
+                              >Ver mais</a
+                            >
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            -->
+            
+
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">
+                  Ocorrências a decorrer
+                </h6>
+              </div>
+              <div class="card-body">
+                <div class="page-wrapper">
+                  <div class="post-slider"></div>
+                      <table
+                      class="table table-bordered table-hover"
+                      id="tabela-ocorrencias-decorrer"
+                      width="100%"
+                      cellspacing="0"
+                    >
+                      <thead>
+                        <tr>
+                         
+                          <th>Local</th>
+                          <th>Nome equipa</th>
+                                                   
+                        </tr>
+                      </thead>
+                      <tbody>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+
+                <!-- Area Chart -->
+                <div class="col-xl-6 col-lg-6">
+                    <div class="card shadow mb-4">
+                        <!-- Card Header - Dropdown -->
+                        <div class="card-header py-3">
+                          <h6 class="m-0 font-weight-bold text-primary">
+                            Estatisticas 
+                          </h6>
+                        </div>
+                        <!-- Card Body -->
+                        <div class="card-body">
+                          <p id="ocorrencia-estatisticas">Ocorrências</p>
+                          <div class="chart-area">
+                            <canvas id="myAreaChart"></canvas>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+  
+                <!-- mapa com as bolinhas -->
+                <div class="col-xl-6 col-lg-6">
+                    <div class="card shadow mb-4">
+                        <!-- Card Header - Dropdown -->
+                        <div class="card-header py-3">
+                          <h6 class="m-0 font-weight-bold text-primary">
+                            Mapa
+                          </h6>
+                        </div>
+                        <!-- Card Body -->
+                        <div class="card-body">
+                          <div id="googleMap"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
+          </div>
+          <footer class="page-footer font-small mdb-color pt-4">
+          <div class="footer-copyright text-center text-black-50 py-3">
+            © 2020 Copyright:
+            <a class="inactiveLink"> Secure4All</a>
+
+            <a href="https://www.facebook.com/pages/Autoridade-Mar%C3%ADtima-Nacional/136707373169490">
+              <i class="fab fa-facebook-square fa-lg"></i>
+              </a>
+              
+              <a href="https://www.instagram.com/autoridademaritimanacional/" class="btnfb btninsta">
+                <i class="fab fa-instagram-square fa-lg"></i>
+              </a>
+
+          </div>
+        </footer>
+        </div>
+
+        <!-- /.container-fluid -->
+
+        <!-- End of Main Content -->
+
+      </div>
+      
+      <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Iniciar Operação (como responsável) Modal -->
+    <div
+      class="modal fade"
+      id="exampleModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <img
+              class="modal-title"
+              id="exampleModalLongTitle"
+              src="/FrontEnd/img/icone.jpg"
+              width="100rem"
+            />
+
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="/FrontEnd/Relatorio.html">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="exampleFormControlSelect3" id="teste">Material alocado à ocorrência:</label>
+                <select
+                  multiple
+                  
+                  class="form-control listas"
+                  id="exampleFormControlSelect3"
+                >
+                </select>
+              </div>
+
+              <div class="form-check">
+                <input
+                  type="radio"
+                  name="required"
+                  required
+                  class="form-check-input"
+                  id="exampleCheck1"
+                  onclick="myFunction()"
+                  oninvalid="this.setCustomValidity('Selecione esta opcção')"
+                  oninput="this.setCustomValidity('')"
+                />
+                <label class="form-check-label" for="exampleCheck1"
+                  >Confirmar material</label
+                >
+                
+              </div>
+              <br />
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  required
+                  disabled
+                  class="form-check-input"
+                  id="check-presenca"
+                />
+                <label class="form-check-label" for="check-presenca"
+                  >Confirmar a presença</label
+                >
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button id="btn_iniciar" type="button" class="btn btn-primary">
+                Iniciar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Iniciar Operação (sem responsável) Modal -->
+    <div
+      class="modal fade"
+      id="modalSemResponsavel"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <img
+              class="modal-title"
+              id="exampleModalLongTitle"
+              src="/FrontEnd/img/icone.jpg"
+              width="100rem"
+            />
+
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="/FrontEnd/Relatorio.html">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="exampleFormControlSelect21">Material:</label>
+                <select
+                  multiple
+                  class="form-control"
+                  id="exampleFormControlSelect21"
+                >
+                  <option>Coletes salva-vidas</option>
+                  <option>Primeiros socorros</option>
+                  <option>Boias</option>
+                  <option>Prancha</option>
+                  <option>Barcos</option>
+                  <option>Botijas de oxigênio</option>
+                  <option>Carros de salvamento</option>
+                  <option>Cordas</option>
+                  <option>Outros</option>
+                </select>
+              </div>
+
+              <br />
+
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  required
+                  class="form-check-input"
+                  id="exampleCheck2"
+                />
+                <label class="form-check-label" for="exampleCheck2"
+                  >Confirmar a presença</label
+                >
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <a href="/FrontEnd/Relatorio.html"
+                ><button type="submit" class="btn btn-primary">
+                  Iniciar
+                </button></a
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ocorrencia a decorrer Modal -->
+    <div
+      class="modal fade"
+      id="ocorrencia-decorrer"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <img
+              class="modal-title"
+              id="exampleModalLongTitle"
+              src="/FrontEnd/img/icone.jpg"
+              width="100rem"
+            />
+
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <div class="form-group row">
+              <label
+                for="colFormLabelLg"
+                class="col-sm-4 col-form-label col-form-label-lg"
+                >Ocorrencia nº:</label
+              >
+              <div class="col-sm-8">
+                <input
+                  readonly
+                  type="text"
+                  class="form-control form-control-lg"
+                  id="colFormLabelLg"
+                />
+                <br>
+              </div>
+              <label
+                for="colFormLabelSm"
+                class="col-sm-2 col-form-label col-form-label-sm"
+                >Equipa:</label
+              >
+              <div class="col-sm-10">
+                <select multiple class="form-control listas">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                </select>
+                <br>
+              </div>
+              <label
+                for="colFormLabelSm"
+                class="col-sm-2 col-form-label col-form-label-sm"
+                >Dados:</label
+              >
+              <div class="col-sm-10">
+                <textarea
+                  readonly
+                  class="form-control"
+                  rows="4"
+                  id="textarea-dados"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logout Modal-->
+    <div
+      class="modal fade"
+      id="logoutModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Pronto para sair?
+            </h5>
+            <button
+              class="close"
+              type="button"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Escolha "Confirmar" se quer realmente terminar a sessão. Caso
+            contrário, escolha "Cancelar".
+          </div>
+          <div class="modal-footer">
+            <button
+              class="btn btn-secondary"
+              type="button"
+              data-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <a class="btn btn-primary" href="/FrontEnd/index.html">Confirmar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Historico de ocorrencias Modal -->
+    <div
+      class="modal fade"
+      id="historico-popup"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <img
+              class="modal-title"
+              id="exampleModalLongTitle"
+              src="/FrontEnd/img/icone.jpg"
+              width="100rem"
+            />
+
+            <button
+            id="sairModal"
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <form class="form-inline">
+              <label class="form-check-label"> <strong>Ocorrência nº</strong> &nbsp; </label>
+              <div class="input-group mb-2 mr-sm-2">
+                <textarea
+                  disabled
+                  class="txtAreaTemposLocal"
+                  id="id_ocorr_selec"
+                  rows="1"
+                  cols="9"
+                ></textarea>
+              </div>
+              <label class="form-check-label" for="inlineFormInputName2">
+                <strong>Créditos</strong> &nbsp;
+              </label>
+              <div class="input-group mb-2 mr-sm-2">
+                <textarea
+                  disabled
+                  class="txtAreaTemposLocal"
+                  id="credito_ocorr"
+                  rows="1"
+                  cols="9"
+                ></textarea>
+              </div>
+            </form>
+            <br>
+            <div class="form-group">
+              <label > <strong>Equipa: </strong></label>
+              <div class="table-responsive">
+                <table
+                  class="table table-bordered table-hover"
+                  id="tabela-equipa-oco-decorrer"
+                  width="100%"
+                  cellspacing="0"
+                >
+                  <thead>
+                    <tr>
+                      <th class="d-none d-lg-table-cell">Id</th>
+                      <th>Nome</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+              <br>
+              <label for="exampleFormControlSelect2"
+                ><strong>Equipamento utilizado:</strong></label
+              >
+              <div class="input-group mb-2 mr-sm-2">
+                <select
+                  multiple
+                  class="form-control"
+                  id="exampleFormControlSelect4"
+                >
+                </select>
+              </div>
+              <br>
+              <br>
+              <label><strong>Testemunhas:</strong></label>
+              <div class="table-responsive">
+                <table
+                class="table table-bordered"
+                  id="tabela-testemunha-acabado"
+                  width="100%"
+                  cellspacing="0">
+                 <thead>
+                   <th>Nome</th>
+                   <th>Profissão</th>
+                   <th>Morada</th>
+                 </thead>
+                 <tbody>
+                 </tbody>
+                </table>
+              </div>
+              <br>
+              <div class="form-group row">
+                <div class="col-sm-7">
+                </div>
+              </div>
+              <br>
+              <div class="form-group row">
+                <label for="exampleFormControlTextarea1" class="col-sm-5 col-form-label"><strong>Outras informações:</strong></label>
+                <div class="col-sm-7">
+                  <textarea class="form-control" disabled id="outrasInformacoes" rows="4"></textarea>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/FrontEnd/vendor/jquery/jquery.min.js"></script>
+    <script src="/FrontEnd/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/FrontEnd/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/FrontEnd/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="/FrontEnd/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/FrontEnd/js/demo/chart-area-demo.js"></script>
+    <script src="/FrontEnd/js/demo/chart-pie-demo.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="/FrontEnd/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/FrontEnd/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/FrontEnd/js/demo/datatables-demo.js"></script>
+    <script src="/FrontEnd/app.js"></script>
+
+    <!-- Controllers -->
+   
+    <script type="text/javascript" src="./controllers/controllerOcorrencia.js"></script>
+
+    <!-- MAPA -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3sd_nCr1dMkHNlyCfLutv5ROv3m7jHnQ&callback=myMap"></script>
+  
+  </body>
+</html>

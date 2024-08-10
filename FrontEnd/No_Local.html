@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="shortcut icon"
+      href="/FrontEnd/img/icon-tab.png"
+      type="image/x-icon"
+    />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="D313-CodePatrol" />
+
+    <title>No Local da Ocorrência</title>
+
+    <!-- Custom fonts-->
+    <link
+      href="/FrontEnd/vendor/fontawesome-free/css/all.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles-->
+    <link
+      href="/FrontEnd/vendor/datatables/dataTables.bootstrap4.min.css"
+      rel="stylesheet"
+    />
+    <link href="/FrontEnd/css/sb-admin-2.min.css" rel="stylesheet" />
+
+    <!-- PWA -->
+    <link rel="manifest" href="/FrontEnd/manifest.json" />
+    <!-- ios support -->
+    <link
+      rel="apple-touch-icon"
+      href="assets/icons/apple-icon-192x192-dunplab-manifest-16715.png"
+    />
+    <meta name="apple-mobile-web=app-status-bar" content="#00aae7" />
+    <meta name="theme-color" content="#00aae7" />
+  </head>
+
+  <body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <nav
+            class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+          >
+            <img
+              class="img-fluid"
+              src="/FrontEnd/img/icone.jpg"
+              width="100rem"
+            />
+            <!-- Topbar Navbar -->
+            <ul class="navbar-nav ml-auto">
+              <!-- Nav Item - User Information -->
+              <li class="nav-item">
+                <a class="nav-link">
+                  <span
+                    class="mr-2 d-none d-lg-inline text-gray-600 small"
+                    id="span_nome"
+                  ></span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- End of Topbar -->
+
+          <!-- no local -->
+          <div class="container-fluid">
+            <!-- Grow In Utility -->
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Tempos</h6>
+              </div>
+              <div class="card-body">
+                <div class="form-group row">
+                  <label
+                    for="tempoEstimado"
+                    class="col-sm-2 col-form-label"
+                    id="label_tempoEstimado"
+                    >Tempo Estimado</label
+                  >
+                  <div class="col-sm-6">
+                    <textarea
+                      placeholder="Em minutos"
+                      class="col-sm-2 txtAreaTemposLocal"
+                      id="tempoEstimado"
+                      rows="1"
+                      cols="9"
+                    ></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label
+                    for="tempoReal"
+                    class="col-sm-2 col-form-label"
+                    id="label_tempoReal"
+                    >Tempo Real</label
+                  >
+                  <div class="col-sm-6">
+                    <textarea
+                    placeholder="Em minutos"
+                      class="col-sm-2 txtAreaTemposLocal"
+                      id="tempoReal"
+                      rows="1"
+                      cols="9"
+                    ></textarea>
+                  </div>
+                  <div class="col-sm-2">
+                    <button id="btn_calcularDiferenca" type="button" class="btn btn-primary">
+                      Calcular Diferença
+                    </button>
+                  </div>
+                  <br />
+                </div>
+
+                <div class="form-group row">
+                  <label
+                    for="tempoDiferenca"
+                    class="col-sm-2 col-form-label"
+                    id="label_difTempo"
+                    >Diferença</label
+                  >
+                  <div class="col-sm-6">
+                    <textarea
+                      disabled
+                      class="col-sm-2 txtAreaTemposLocal"
+                      id="tempoDiferenca"
+                      rows="1"
+                      cols="9"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Testemunhas</h6>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table
+                    class="table table-bordered"
+                    id="tabela-testemunhas"
+                    width="100%"
+                    cellspacing="0"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Nome</th>
+                        <th>Localidade</th>
+                        <th>Profissão</th>
+                        <th>Email</th>
+                        <th>Notas</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                  <br />
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      id="btnTestemunhas"
+                      data-toggle="modal"
+                      data-target="#exampleModalCenter"
+                    >
+                      Adicionar testemunha
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+
+              <!-- Lista para confirmar o material utilizado -->
+              <!--
+
+                <div class="col-lg-6">
+                <div class="card position-relative">
+                  <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                      Confirmar material utilizado
+                    </h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="confirmar-l-material">
+                      <ul class="list-group list-group-flush listas">
+                        <li class="list-group-item">
+                          <div class="custom-control custom-checkbox">
+                            <input
+                              type="checkbox"
+                              data-trigger="hidden_fields_1"
+                              class="custom-control-input trigger"
+                              id="check1"
+                            />
+                            <label class="custom-control-label" for="check1"
+                              >Bóias</label
+                            >
+                            <br />
+                            <div id="hidden_fields_1" class="hidden">
+                              <input
+                                type="range"
+                                min="1"
+                                id="qt1"
+                                max="3"
+                                oninput="this.nextElementSibling.value = this.value"
+                              />
+                              <output></output>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list-group-item">
+                          <div class="custom-control custom-checkbox">
+                            <input
+                              type="checkbox"
+                              data-trigger="hidden_fields_2"
+                              class="custom-control-input trigger"
+                              id="check2"
+                            />
+                            <label class="custom-control-label" for="check2"
+                              >Coletes salva-vidas</label
+                            >
+                            <br />
+                            <div id="hidden_fields_2" class="hidden">
+                              <input
+                                type="range"
+                                min="1"
+                                id="qt2"
+                                max="3"
+                                oninput="this.nextElementSibling.value = this.value"
+                              />
+                              <output></output>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list-group-item">
+                          <div class="custom-control custom-checkbox">
+                            <input
+                              type="checkbox"
+                              data-trigger="hidden_fields_3"
+                              class="custom-control-input trigger"
+                              id="check3"
+                            />
+                            <label class="custom-control-label" for="check3"
+                              >Botijas de oxigénio</label
+                            >
+                            <br />
+                            <div id="hidden_fields_3" class="hidden">
+                              <input
+                                type="range"
+                                min="1"
+                                id="qt3"
+                                max="100"
+                                oninput="this.nextElementSibling.value = this.value"
+                              />
+                              <output></output>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list-group-item">
+                          <div class="custom-control custom-checkbox">
+                            <input
+                              type="checkbox"
+                              data-trigger="hidden_fields_4"
+                              class="custom-control-input trigger"
+                              id="check4"
+                            />
+                            <label class="custom-control-label" for="check4"
+                              >Cordas</label
+                            >
+                            <br />
+                            <div id="hidden_fields_4" class="hidden">
+                              <input
+                                type="range"
+                                min="1"
+                                id="qt4"
+                                max="3"
+                                oninput="this.nextElementSibling.value = this.value"
+                              />
+                              <output></output>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list-group-item">
+                          <div class="custom-control custom-checkbox">
+                            <input
+                              type="checkbox"
+                              data-trigger="hidden_fields_5"
+                              class="custom-control-input trigger"
+                              id="check5"
+                            />
+                            <label class="custom-control-label" for="check5"
+                              >Prancha</label
+                            >
+                            <br />
+                            <div id="hidden_fields_5" class="hidden">
+                              <input
+                                type="range"
+                                min="1"
+                                id="qt5"
+                                max="3"
+                                oninput="this.nextElementSibling.value = this.value"
+                              />
+                              <output></output>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list-group-item">
+                          <div class="custom-control custom-checkbox">
+                            <input
+                              type="checkbox"
+                              data-trigger="hidden_fields_6"
+                              class="custom-control-input trigger"
+                              id="check6"
+                            />
+                            <label class="custom-control-label" for="check6"
+                              >Balde</label
+                            >
+                            <br />
+                            <div id="hidden_fields_6" class="hidden">
+                              <input
+                                type="range"
+                                min="1"
+                                id="qt6"
+                                max="3"
+                                oninput="this.nextElementSibling.value = this.value"
+                              />
+                              <output></output>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list-group-item">
+                          <div class="custom-control custom-checkbox">
+                            <input
+                              type="checkbox"
+                              data-trigger="hidden_fields_7"
+                              class="custom-control-input trigger"
+                              id="check7"
+                            />
+                            <label class="custom-control-label" for="check7"
+                              >Pa</label
+                            >
+                            <br />
+                            <div id="hidden_fields_7" class="hidden">
+                              <input
+                                type="range"
+                                min="1"
+                                id="qt7"
+                                max="3"
+                                oninput="this.nextElementSibling.value = this.value"
+                              />
+                              <output></output>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list-group-item">
+                          <div class="custom-control custom-checkbox">
+                            <input
+                              type="checkbox"
+                              data-trigger="hidden_fields_8"
+                              class="custom-control-input trigger"
+                              id="check8"
+                            />
+                            <label class="custom-control-label" for="check8"
+                              >Oculos</label
+                            >
+                            <br />
+                            <div id="hidden_fields_8" class="hidden">
+                              <input
+                                type="range"
+                                min="1"
+                                id="qt8"
+                                max="3"
+                                oninput="this.nextElementSibling.value = this.value"
+                              />
+                              <output></output>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <br />
+              </div>
+
+              -->
+              <div class="col-xl-8 col-lg-7">
+                  <div class="card shadow mb-4">
+                      <!-- Card Header - Dropdown -->
+                      <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                          Material utilizado 
+                        </h6>
+                      </div>
+                      <!-- Card Body -->
+                      <div class="card-body">
+                        <div class="form-group">
+                          <label>Material utilizado:</label>
+                          <select
+                            multiple
+                            class="form-control listas"
+                            id="listaMatUtilizadoNoLocal"
+                          ></select>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="col-xl-4 col-lg-5">
+                  <div class="card shadow mb-4">
+                      <!-- Card Header - Dropdown -->
+                      <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                          Sobreviventes
+                        </h6>
+                      </div>
+                      <!-- Card Body -->
+                      <div class="modal-body">
+                        <div class="form-group">
+                          <label>Indique a percentagem de sobreviventes</label>
+                          <br>
+                        <input
+                          type="number"
+                          min="0"
+                          max="100"
+                          id="vitimas-s" 
+                        />
+                       
+                        <br>
+                        <br>
+                        <p>Preencha esta opção (obrigatória).</p>
+                        <br>
+                        </div>
+                        
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="btn_ConcluirOperacao"
+              >
+                Concluir operação
+              </button>
+            </div>
+            <!-- Footer -->
+            <footer class="page-footer font-small mdb-color pt-4">
+              <div class="footer-copyright text-center text-black-50 py-3">
+                © 2020 Copyright:
+                <a class="inactiveLink"> Secure4All</a>
+              </div>
+            </footer>
+            <!-- Footer -->
+          </div>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="exampleModalCenter"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <img
+                    class="modal-title"
+                    id="exampleModalLongTitle"
+                    src="/FrontEnd/img/icone.jpg"
+                    width="100rem"
+                  />
+
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                <div class="modal-body">
+                  <form>
+                    <input
+                      id="nomeTestemunha"
+                      class="form-control form-control-sm"
+                      type="text"
+                      placeholder="Nome"
+                    />
+                    <br />
+                    <input
+                      id="localTestemunha"
+                      class="form-control form-control-sm"
+                      type="text"
+                      placeholder="Localidade"
+                    />
+                    <br />
+                    <input
+                      id="profissaoTestemunha"
+                      class="form-control form-control-sm"
+                      type="text"
+                      placeholder="Profissão"
+                    />
+                    <br />
+                    <input
+                      id="emailTestemunha"
+                      class="form-control form-control-sm"
+                      type="email"
+                      placeholder="Email"
+                    />
+                    <br />
+                    <textarea
+                      id="notasTestemunha"
+                      class="form-control form-control-sm"
+                      rows="4"
+                      placeholder="Notas"
+                    ></textarea>
+                  </form>
+                </div>
+
+                <div class="modal-footer">
+                  <a
+                    ><button
+                      id="btn_criarTestemunha"
+                      type="button"
+                      class="btn btn-primary"
+                    >
+                      Confirmar
+                    </button></a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/FrontEnd/vendor/jquery/jquery.min.js"></script>
+    <script src="/FrontEnd/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/FrontEnd/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/FrontEnd/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="/FrontEnd/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/FrontEnd/js/demo/chart-area-demo.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="/FrontEnd/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/FrontEnd/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/FrontEnd/js/demo/datatables-demo.js"></script>
+    <script src="/FrontEnd/app.js"></script>
+    <script
+      type="text/javascript"
+      src="./controllers/controllerTestemunha.js"
+    ></script>
+    <script
+    type="text/javascript"
+    src="./controllers/controllerTempos.js"
+  ></script>
+  <script
+  type="text/javascript"
+  src="./controllers/controllerConfirmarOcorrencia.js"
+></script>
+<script type="text/javascript" src="/FrontEnd/controllers/controllerNoLocal.js"></script>
+  </body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" href="/FrontEnd/img/icon-tab.png" type="image/x-icon" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="D313-CodePatrol" />
+
+    <title>Relatório da Ocorrência</title>
+
+    <!-- Custom fonts-->
+    <link
+      href="/FrontEnd/vendor/fontawesome-free/css/all.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles-->
+    <link href="/FrontEnd/css/sb-admin-2.min.css" rel="stylesheet" />
+  
+    <!-- PWA -->
+    <link rel="manifest" href="/FrontEnd/manifest.json" />
+    <!-- ios support -->
+    <link
+      rel="apple-touch-icon"
+      href="assets/icons/apple-icon-192x192-dunplab-manifest-16715.png"
+    />
+    <meta name="apple-mobile-web=app-status-bar" content="#00aae7" />
+    <meta name="theme-color" content="#00aae7" />
+  </head>
+
+  <body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <nav
+            class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+          >
+            <img class="img-fluid" src="/FrontEnd/img/icone.jpg" width="100rem" />
+            <!-- Topbar Navbar -->
+            <ul class="navbar-nav ml-auto">
+              <!-- Nav Item - User Information -->
+              <li class="nav-item">
+                <a class="nav-link">
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="span_nome"
+                    ></span
+                  >
+                </a>
+                <!-- Dropdown - User Information -->
+                <div
+                  class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                  aria-labelledby="userDropdown"
+                >
+                  <a class="dropdown-item" href="#">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Profile
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    data-toggle="modal"
+                    data-target="#logoutModal"
+                  >
+                    <i
+                      class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
+                    ></i>
+                    Logout
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <!-- End of Topbar -->
+
+          <!-- Relatorio -->
+          <div class="container-fluid">
+            <div class="row">
+                <!-- Grow In Utility -->
+                <div class="col-lg-6">
+                  <div class="card position-relative">
+                    <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">
+                        Relatório
+                      </h6>
+                    </div>
+                    <div class="card-body">
+                      
+                      <label for="exampleFormControlSelect3" id="teste">Material alocado à ocorrência:</label>
+                      <div class="col-lg-12">
+                        <select
+                          multiple
+                          class="form-control listas"
+                          id="exampleFormControlSelect3"
+                        >
+                        </select>
+                      </div>
+                      
+                      <br>
+
+                      <h5>Dados da ocorrência:</h5>
+                      <div class="col-lg-12">
+                        <h6 id="label_local"></h6>
+                        <h6 id="label_urgencia"></h6>
+                        <div class="form-group">
+                          <!-- o id nomeEquipaAtual devia ser uma classe -->
+                          <label for="exampleFormControlSelect2" id="label_nomeEquipa" >Equipa: </label>
+                          
+                          <div class="table-responsive">
+                            <table
+                              class="table table-bordered table-hover"
+                              id="tabela-equipa-oco-atual"
+                              width="100%"
+                              cellspacing="0"
+                            >
+                              <thead>
+                                <tr>
+                                  <th>Id</th>
+                                  <th>Nome</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <br>                    
+                      <br>
+
+                      <h5>Observações:</h5>
+                      <div class="col-lg-12">
+                        <textarea class="form-control" disabled id="exampleFormControlTextarea5" rows="4"></textarea>
+                      </div>
+
+                      <br>
+
+                      <div class="modal-footer">
+                        <a href="/FrontEnd/No_Local.html"
+                          ><button type="submit" class="btn btn-primary" onclick=tempoChegadaLocal()>
+                            Confirmar chegada ao local
+                          </button></a
+                        >
+                      </div>
+
+                    </div>
+                  </div>
+                  <br>
+                </div>
+                <!-- Fade In Utility -->
+                <div class="col-lg-6">
+                  <div class="card position-relative">
+                    <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">Rota e tempo estimado</h6>
+                    </div>
+
+                    <div class="card-body">
+                      <div class="mb-3">
+                        <div id="googleMap"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/FrontEnd/vendor/jquery/jquery.min.js"></script>
+    <script src="/FrontEnd/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/FrontEnd/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/FrontEnd/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="/FrontEnd/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="/FrontEnd/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/FrontEnd/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/FrontEnd/js/demo/datatables-demo.js"></script>
+    <script src="/FrontEnd/app.js"></script>
+    <script src="/FrontEnd/controllers/controllerOcorrencia.js"></script>
+    
+    <!-- MAPA -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3sd_nCr1dMkHNlyCfLutv5ROv3m7jHnQ&callback=myMap"></script>
+  
+  </body>
+</html>

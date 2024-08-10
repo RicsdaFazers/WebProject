@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="shortcut icon"
+      href="/FrontEnd/img/icon-tab.png"
+      type="image/x-icon"
+    />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="D313-CodePatrol" />
+
+    <title>Perfil</title>
+
+    <!-- Custom fonts -->
+    <link
+      href="/FrontEnd/vendor/fontawesome-free/css/all.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles -->
+    <link href="/FrontEnd/css/sb-admin-2.min.css" rel="stylesheet" />
+
+    <!-- PWA -->
+    <link rel="manifest" href="/FrontEnd/manifest.json" />
+    <!-- ios support -->
+    <link
+      rel="apple-touch-icon"
+      href="assets/icons/apple-icon-192x192-dunplab-manifest-16715.png"
+    />
+    <meta name="apple-mobile-web=app-status-bar" content="#00aae7" />
+    <meta name="theme-color" content="#00aae7" />
+  </head>
+
+  <body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <!-- Menu lateral -->
+      <ul
+        class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+        id="accordionSidebar"
+      >
+        <!-- icone -->
+        <div
+          class="sidebar-brand d-flex align-items-center justify-content-center"
+        >
+          <div class="sidebar-brand-icon">
+            <img
+              src="/FrontEnd/img/icon-menu-lateral.PNG"
+              alt=""
+              height="40px"
+              width="45px"
+            />
+          </div>
+          <div class="sidebar-brand-text mx-3">Polícia Marítima</div>
+        </div>
+
+        <br />
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+        <br />
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link" href="/FrontEnd/Pagina-principal.html">
+            <i class="fas fa-home"></i>
+            <span>Página principal</span></a
+          >
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="/FrontEnd/Perfil.html">
+            <i class="fas fa-user-circle"></i>
+            <span>Perfil</span></a
+          >
+        </li>
+
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapseUtilities"
+            aria-expanded="true"
+            aria-controls="collapseUtilities"
+          >
+            <i class="fas fa-trophy"></i>
+            <span>Ranking</span>
+          </a>
+          <div
+            id="collapseUtilities"
+            class="collapse"
+            aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar"
+          >
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a
+                class="collapse-item"
+                href="/FrontEnd/Ranking.html#ranking-operacionais"
+                >Ranking Operacionais</a
+              >
+              <a
+                class="collapse-item"
+                href="/FrontEnd/Ranking.html#ranking-equipa"
+                >Ranking Equipa</a
+              >
+            </div>
+          </div>
+        </li>
+
+        <br />
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            data-toggle="modal"
+            data-target="#exampleModalCenter2"
+          >
+            <i class="fas fa-arrow-alt-circle-left"></i>
+            <span>Voltar</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            data-toggle="modal"
+            data-target="#logoutModal"
+            href="/FrontEnd/index.html"
+          >
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span></a
+          >
+        </li>
+
+        <br />
+        <br />
+
+        <!-- Sidebar Message -->
+        <div
+          class="sidebar-brand d-flex align-items-center justify-content-center"
+        >
+          <div class="sidebar-brand-icon">
+            <i class="fas fa-hands-helping"></i>
+          </div>
+          <div class="sidebar-brand-text mx-3">Secure4All</div>
+        </div>
+      </ul>
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <nav
+            class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+          >
+            <!-- Sidebar Toggle (Topbar) -->
+            <button
+              id="sidebarToggleTop"
+              class="btn btn-link d-md-none rounded-circle mr-3"
+            >
+              <i class="fa fa-bars"></i>
+            </button>
+
+            <img
+              class="img-fluid"
+              src="/FrontEnd/img/icone.jpg"
+              width="100rem"
+            />
+          </nav>
+          <!-- End of Topbar -->
+
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <!-- Illustrations -->
+
+            <!-- Area Chart -->
+            <div class="row">
+              <!-- Pie Chart -->
+
+              <div class="col-xl-12 col-lg-8">
+                <div class="card shadow mb-4">
+                  <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                      Informações profissionais
+                    </h6>
+                  </div>
+                  <div class="card-body">
+                    <form id="FormPerfil">
+                      <div class="form-group row">
+                        <label for="PerfilUser" class="col-sm-2 col-form-label"
+                          ><strong>Username:</strong></label
+                        >
+                        <div class="col-sm-10">
+                          <label for="col-sm-2 col-form-label" id="PerfilUser"
+                            ><strong></strong
+                          ></label>
+                          <br />
+                        </div>
+                        <br />
+                        <br />
+                        <label
+                          for="PerfilEspecialidade"
+                          class="col-sm-2 col-form-label"
+                          ><strong>Especialidade:</strong></label
+                        >
+                        <div class="col-sm-10">
+                          <label
+                            for="col-sm-2 col-form-label"
+                            id="PerfilEspecialidade"
+                            ><strong></strong
+                          ></label>
+                          <br />
+                        </div>
+
+                        <label for="PerfilNome" class="col-sm-2 col-form-label"
+                          ><strong>Nome:</strong></label
+                        >
+                        <div class="col-sm-10">
+                          <input
+                            required
+                            type="text"
+                            class="form-control"
+                            id="PerfilNome1"
+                          />
+                          <br />
+                        </div>
+
+                        <label for="staticEmail" class="col-sm-2 col-form-label"
+                          ><strong>Password:</strong></label
+                        >
+                        <div class="col-sm-10">
+                          <div class="input-group mb-3">
+                            <input
+                              required
+                              type="text"
+                              id="password-perfil1"
+                              class="form-control"
+                              placeholder="**********"
+                              aria-label="Recipient's username"
+                              aria-describedby="basic-addon2"
+                            />
+
+                            <!--<div class="input-group-append">
+                              <button
+                                type="button"
+                                id="btnTestemunhas"
+                                data-toggle="modal"
+                                data-target="#exampleModalCenter"
+                                class="btn btn-outline-secondary"
+                                type="button"
+                              >
+                                Alterar
+                              </button>
+                            </div>-->
+                          </div>
+                        </div>
+
+                        <label for="PerfilEmail" class="col-sm-2 col-form-label"
+                          ><strong>Email:</strong></label
+                        >
+                        <div class="col-sm-10">
+                          <div class="input-group mb-3">
+                            <input
+                              required
+                              id="PerfilEmail1"
+                              type="text"
+                              class="form-control"
+                              placeholder="email@policia-maritima.pt"
+                              aria-label="Recipient's username"
+                              aria-describedby="basic-addon2"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- este botao so deve aparecer caso seja alterado qql dado -->
+            <!-- devemos por em todas as opções do menu um popup a perguntar se quer sair sem confirmar as alteracoes -->
+            <div class="modal-footer">
+              <button
+                type="button"
+                data-toggle="modal"
+                data-target="#guardar-dados"
+                class="btn btn-primary"
+              >
+                Guardar alterações
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- /.container-fluid -->
+
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="page-footer font-small mdb-color pt-4">
+          <div class="footer-copyright text-center text-black-50 py-3">
+            © 2020 Copyright:
+            <a class="inactiveLink"> Secure4All</a>
+
+            <a
+              href="https://www.facebook.com/pages/Autoridade-Mar%C3%ADtima-Nacional/136707373169490"
+            >
+              <i class="fab fa-facebook-square fa-lg"></i>
+            </a>
+
+            <a
+              href="https://www.instagram.com/autoridademaritimanacional/"
+              class="btnfb btninsta"
+            >
+              <i class="fab fa-instagram-square fa-lg"></i>
+            </a>
+          </div>
+        </footer>
+        <!-- Footer -->
+      </div>
+      <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Password Modal -->
+    <div
+      class="modal fade"
+      id="exampleModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <img
+              class="modal-title"
+              id="exampleModalLongTitle"
+              src="/FrontEnd/img/icone.jpg"
+              width="100rem"
+            />
+
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="exampleFormControlSelect2"
+                  >Código enviado para o email pessoal.</label
+                >
+                <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label"
+                    >Código:</label
+                  >
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEmail3" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="btnTestemunhas"
+                data-toggle="modal"
+                data-target="#mudar-pass"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                Ok
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mudar Password Modal-->
+    <div
+      class="modal fade"
+      id="mudar-pass"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <img
+              class="modal-title"
+              id="exampleModalLongTitle"
+              src="/FrontEnd/img/icone.jpg"
+              width="100rem"
+            />
+
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form>
+            <div class="modal-body">
+              <form>
+                <div class="form-group row">
+                  <label for="inputPassword" class="col-sm-5 col-form-label"
+                    >Antiga password:</label
+                  >
+                  <div class="col-sm-7">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="inputPassword"
+                    />
+                  </div>
+                  <br />
+                  <br />
+                  <label for="inputPassword" class="col-sm-5 col-form-label"
+                    >Nova password:</label
+                  >
+                  <div class="col-sm-7">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="inputPassword"
+                    />
+                  </div>
+                  <br />
+                  <br />
+                  <label for="inputPassword" class="col-sm-5 col-form-label"
+                    >Repetir nova password:</label
+                  >
+                  <div class="col-sm-7">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="inputPassword"
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="btnAtualiza"
+                data-toggle="modal"
+                data-target="#mudar-pass"
+              >
+                Confirmar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guardar dados modal -->
+    <div
+      class="modal fade"
+      id="guardar-dados"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <img
+              class="modal-title"
+              id="exampleModalLongTitle"
+              src="/FrontEnd/img/icone.jpg"
+              width="100rem"
+            />
+
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="exampleFormControlSelect2"
+                  >Pretende alterar e guardar os dados editados?</label
+                >
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="btnTestemunhas"
+                data-dismiss="modal"
+                aria-label="Close"
+                onclick="atualizarUser()"
+              >
+                Confirmar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- VOLTAR MODAL -->
+    <div
+      class="modal fade"
+      id="exampleModalCenter2"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <img
+              class="modal-title"
+              id="exampleModalLongTitle"
+              src="/FrontEnd/img/icone.jpg"
+              width="100rem"
+            />
+
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form>
+            <div class="modal-body">
+              <h5>Pretende guardar as alterações e sair?</h5>
+            </div>
+
+            <div class="modal-footer">
+              <a href="/FrontEnd/Pagina-principal.html">
+                <button
+                  type="button"
+                  onclick="atualizarUser()"
+                  class="btn btn-primary"
+                >
+                  Guardar e Sair
+                </button>
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logout Modal-->
+    <div
+      class="modal fade"
+      id="logoutModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Pronto para sair?
+            </h5>
+            <button
+              class="close"
+              type="button"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Escolha "Confirmar" se quer realmente terminar a sessão. Caso
+            contrário, escolha "Cancelar".
+          </div>
+          <div class="modal-footer">
+            <button
+              class="btn btn-secondary"
+              type="button"
+              data-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <a class="btn btn-primary" href="/FrontEnd/index.html">Confirmar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/FrontEnd/vendor/jquery/jquery.min.js"></script>
+    <script src="/FrontEnd/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/FrontEnd/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/FrontEnd/js/sb-admin-2.min.js"></script>
+
+    <script src="/FrontEnd/controllers/controllerOperacional.js"></script>
+    <script src="/FrontEnd/app.js"></script>
+  </body>
+</html>
